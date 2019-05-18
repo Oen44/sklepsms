@@ -1,0 +1,171 @@
+CREATE TABLE IF NOT EXISTS `servers` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`net_id` INT NOT NULL,
+	`name` TEXT NOT NULL,
+	`ip_address` VARCHAR(22) NOT NULL UNIQUE KEY,
+	`creation_date` INT NOT NULL,
+	`shop_version` DOUBLE(3, 2) NOT NULL DEFAULT 1.0,
+	INDEX(`id`)
+);
+CREATE TABLE IF NOT EXISTS `networks` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`owner_id` INT NOT NULL,
+	`partners` TEXT NULL DEFAULT NULL,
+	`web_page` VARCHAR(128) NOT NULL UNIQUE KEY,
+	`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`license_update` TIMESTAMP NULL DEFAULT NULL,
+  `license_expire` TIMESTAMP NULL DEFAULT NULL,
+	INDEX(`id`)
+);
+CREATE TABLE IF NOT EXISTS `services` (
+	`id` INT NOT NULL AUTO_INCREMENT UNIQUE KEY,
+	`service_id` VARCHAR(16) NOT NULL PRIMARY KEY,
+  `service_title` TEXT NOT NULL,
+  `service_description` TEXT NOT NULL,
+  `service_suffix` TEXT NOT NULL,
+	`service_type` INT NOT NULL DEFAULT 0
+);
+ALTER TABLE `services`
+  ADD UNIQUE KEY `service_id` (`service_id`);
+  
+CREATE TABLE IF NOT EXISTS `network_services` (
+	`network_id` INT NOT NULL,
+	`service_id` VARCHAR(16) NOT NULL
+);
+ALTER TABLE `network_services`
+  ADD UNIQUE KEY `ss` (`service_id`, `network_id`),
+  ADD KEY `service_id` (`service_id`);
+ALTER TABLE `network_services`
+  ADD CONSTRAINT `network_services_1` FOREIGN KEY (`network_id`) REFERENCES `networks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `network_services_2` FOREIGN KEY (`service_id`) REFERENCES `services` (`service_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE IF NOT EXISTS `server_services` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`service_id` VARCHAR(16) NOT NULL,
+	`server_id` INT NOT NULL,
+  `prices` TEXT NULL DEFAULT NULL,
+  `prices_json` TEXT NULL DEFAULT NULL,
+	`flags` VARCHAR(30) NULL DEFAULT NULL,
+	`weapon_id` INT NULL DEFAULT NULL,
+	`api` INT NULL
+);
+ALTER TABLE `server_services`
+  ADD UNIQUE KEY `ss` (`server_id`,`service_id`),
+  ADD KEY `service_id` (`service_id`);
+ALTER TABLE `server_services`
+  ADD CONSTRAINT `server_services_1` FOREIGN KEY (`server_id`) REFERENCES `servers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `server_services_2` FOREIGN KEY (`service_id`) REFERENCES `services` (`service_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+CREATE TABLE IF NOT EXISTS `services_bought` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`server_id` INT NOT NULL,
+	`service_id` INT NOT NULL,
+  `date` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `player` TEXT NOT NULL,
+  `sms_code` TEXT NOT NULL,
+  `amount` TEXT NOT NULL,
+  `cost` DOUBLE(3, 2) NOT NULL,
+  `income` DOUBLE(3, 2) NOT NULL,
+	INDEX(`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `notifis` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`title` TEXT NOT NULL,
+	`desc` TEXT NOT NULL,
+	INDEX(`id`)
+);
+CREATE TABLE IF NOT EXISTS `notifis_read` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`not_id` INT NOT NULL,
+	`user_id` INT NOT NULL,
+	INDEX(`id`)
+);
+CREATE TABLE IF NOT EXISTS `reports` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_id` INT NOT NULL,
+	`title` TEXT NOT NULL,
+	`description` TEXT NOT NULL,
+  `date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` ENUM('Otwarty', 'Zamknięty') NOT NULL,
+	INDEX(`id`)
+);
+CREATE TABLE IF NOT EXISTS `reports_answers` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`rep_id` INT NOT NULL,
+	`user_id` INT NOT NULL,
+	`content` TEXT NOT NULL,
+	INDEX(`id`)
+);
+CREATE TABLE IF NOT EXISTS `apis` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` VARCHAR(64) NOT NULL UNIQUE KEY,
+	INDEX(`id`)
+);
+CREATE TABLE IF NOT EXISTS `network_apis` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`api_id` INT NOT NULL,
+	`net_id` INT NOT NULL,
+	`title` VARCHAR(32) NOT NULL,
+	`api_key` TEXT NOT NULL,
+	INDEX(`id`)
+);
+CREATE TABLE IF NOT EXISTS `updates` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`version` VARCHAR(8) NOT NULL UNIQUE,
+	`text` TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS `logs` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`user_id` INT NOT NULL,
+	`log` TEXT NOT NULL,
+	`date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `players_flags` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`server` INT NOT NULL,
+	`type` INT NOT NULL DEFAULT 0,
+	`auth_data` VARCHAR(32) NOT NULL,
+	`password` VARCHAR(34) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+	`a` INT NOT NULL DEFAULT 0,
+	`b` INT NOT NULL DEFAULT 0,
+	`c` INT NOT NULL DEFAULT 0,
+	`d` INT NOT NULL DEFAULT 0,
+	`e` INT NOT NULL DEFAULT 0,
+	`f` INT NOT NULL DEFAULT 0,
+	`g` INT NOT NULL DEFAULT 0,
+	`h` INT NOT NULL DEFAULT 0,
+	`i` INT NOT NULL DEFAULT 0,
+	`j` INT NOT NULL DEFAULT 0,
+	`k` INT NOT NULL DEFAULT 0,
+	`l` INT NOT NULL DEFAULT 0,
+	`m` INT NOT NULL DEFAULT 0,
+	`n` INT NOT NULL DEFAULT 0,
+	`o` INT NOT NULL DEFAULT 0,
+	`p` INT NOT NULL DEFAULT 0,
+	`q` INT NOT NULL DEFAULT 0,
+	`r` INT NOT NULL DEFAULT 0,
+	`s` INT NOT NULL DEFAULT 0,
+	`t` INT NOT NULL DEFAULT 0,
+	`u` INT NOT NULL DEFAULT 0,
+	`y` INT NOT NULL DEFAULT 0,
+	`v` INT NOT NULL DEFAULT 0,
+	`w` INT NOT NULL DEFAULT 0,
+	`x` INT NOT NULL DEFAULT 0,
+	`z` INT NOT NULL DEFAULT 0,
+	INDEX(`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `network_codes` (
+	`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`net_id` INT NOT NULL,
+	`code` VARCHAR(16) NOT NULL,
+	`value` INT NOT NULL,
+	`used_date` TIMESTAMP NULL,
+	`player` TEXT NULL
+);
+ALTER TABLE `network_codes`
+  ADD UNIQUE KEY `nc` (`net_id`, `code`),
+	ADD CONSTRAINT `network_codes_1` FOREIGN KEY (`net_id`) REFERENCES `networks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

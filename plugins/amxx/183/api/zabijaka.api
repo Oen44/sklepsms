@@ -1,0 +1,85 @@
+ZabijakaAPI() {
+	new api[ApiData];
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+
+	api[API_ID] = 1;
+	api[API_NUMBER] = 7136;
+	api[API_VAT] = "1.00";
+	api[API_PRICE] = "1.23";
+	api[API_INCOME] = "0.65";
+	api[API_MSG] = "ZABIJ";
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+
+	api[API_ID] = 2;
+	api[API_NUMBER] = 7255;
+	api[API_VAT] = "2.00";
+	api[API_PRICE] = "2.46";
+	api[API_INCOME] = "1.30";
+	api[API_MSG] = "ZABIJ";
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+
+	api[API_ID] = 3;
+	api[API_NUMBER] = 7355;
+	api[API_VAT] = "3.00";
+	api[API_PRICE] = "3.69";
+	api[API_INCOME] = "1.95";
+	api[API_MSG] = "ZABIJ";
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+
+	api[API_ID] = 4;
+	api[API_NUMBER] = 7455;
+	api[API_VAT] = "4.00";
+	api[API_PRICE] = "4.92";
+	api[API_INCOME] = "2.60";
+	api[API_MSG] = "ZABIJ";
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+
+	api[API_ID] = 5;
+	api[API_NUMBER] = 7555;
+	api[API_VAT] = "5.00";
+	api[API_PRICE] = "6.15";
+	api[API_INCOME] = "3.25";
+	api[API_MSG] = "ZABIJ";
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+
+	api[API_ID] = 6;
+	api[API_NUMBER] = 7636;
+	api[API_VAT] = "6.00";
+	api[API_PRICE] = "7.38";
+	api[API_INCOME] = "3.90";
+	api[API_MSG] = "ZABIJ";
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+
+	api[API_ID] = 7;
+	api[API_NUMBER] = 7936;
+	api[API_VAT] = "9.00";
+	api[API_PRICE] = "11.07";
+	api[API_INCOME] = "5.85";
+	api[API_MSG] = "ZABIJ";
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+
+	api[API_ID] = 8;
+	api[API_NUMBER] = 91455;
+	api[API_VAT] = "14.00";
+	api[API_PRICE] = "17.22";
+	api[API_INCOME] = "9.10";
+	api[API_MSG] = "ZABIJ";
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+
+	api[API_ID] = 9;
+	api[API_NUMBER] = 91955;
+	api[API_VAT] = "19.00";
+	api[API_PRICE] = "23.37";
+	api[API_INCOME] = "12.35";
+	api[API_MSG] = "ZABIJ";
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+
+	api[API_ID] = 10;
+	api[API_NUMBER] = 92555;
+	api[API_VAT] = "25.00";
+	api[API_PRICE] = "30.75";
+	api[API_INCOME] = "16.25";
+	api[API_MSG] = "ZABIJ";
+	ArrayPushArray(g_ApiArray[API_ZABIJAKA], api);
+}
+

@@ -1,0 +1,85 @@
+SettiAPI() {
+	new api[ApiData];
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+
+	api[API_ID] = 1;
+	api[API_NUMBER] = 71480;
+	api[API_VAT] = "1.00";
+	api[API_PRICE] = "1.23";
+	api[API_INCOME] = "0.50";
+	api[API_MSG] = "SKLEP";
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+
+	api[API_ID] = 2;
+	api[API_NUMBER] = 72480;
+	api[API_VAT] = "2.00";
+	api[API_PRICE] = "2.46";
+	api[API_INCOME] = "1.00";
+	api[API_MSG] = "SKLEP";
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+
+	api[API_ID] = 3;
+	api[API_NUMBER] = 73480;
+	api[API_VAT] = "3.00";
+	api[API_PRICE] = "3.69";
+	api[API_INCOME] = "1.50";
+	api[API_MSG] = "SKLEP";
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+
+	api[API_ID] = 4;
+	api[API_NUMBER] = 74480;
+	api[API_VAT] = "4.00";
+	api[API_PRICE] = "4.92";
+	api[API_INCOME] = "2.00";
+	api[API_MSG] = "SKLEP";
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+
+	api[API_ID] = 5;
+	api[API_NUMBER] = 75480;
+	api[API_VAT] = "5.00";
+	api[API_PRICE] = "6.15";
+	api[API_INCOME] = "2.50";
+	api[API_MSG] = "SKLEP";
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+
+	api[API_ID] = 6;
+	api[API_NUMBER] = 76480;
+	api[API_VAT] = "6.00";
+	api[API_PRICE] = "7.38";
+	api[API_INCOME] = "3.00";
+	api[API_MSG] = "SKLEP";
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+
+	api[API_ID] = 7;
+	api[API_NUMBER] = 79480;
+	api[API_VAT] = "9.00";
+	api[API_PRICE] = "11.07";
+	api[API_INCOME] = "4.50";
+	api[API_MSG] = "SKLEP";
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+
+	api[API_ID] = 8;
+	api[API_NUMBER] = 91400;
+	api[API_VAT] = "14.00";
+	api[API_PRICE] = "17.22";
+	api[API_INCOME] = "7.00";
+	api[API_MSG] = "SKLEP";
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+
+	api[API_ID] = 9;
+	api[API_NUMBER] = 91900;
+	api[API_VAT] = "19.00";
+	api[API_PRICE] = "23.37";
+	api[API_INCOME] = "9.50";
+	api[API_MSG] = "SKLEP";
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+
+	api[API_ID] = 10;
+	api[API_NUMBER] = 92521;
+	api[API_VAT] = "25.00";
+	api[API_PRICE] = "30.75";
+	api[API_INCOME] = "12.50";
+	api[API_MSG] = "SKLEP";
+	ArrayPushArray(g_ApiArray[API_SETTI], api);
+}
+
